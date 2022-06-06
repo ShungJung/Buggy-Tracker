@@ -55,10 +55,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 1536,
         "resizable": true,
         "title": "Buggy Tracker",
-        "width": 800
+        "width": 864
       }
     ]
   }
