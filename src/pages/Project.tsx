@@ -3,7 +3,7 @@ import { TIssue, TProject } from './types';
 import { appWindow } from '@tauri-apps/api/window';
 import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Button, Input } from '@mantine/core';
+import { Button, Input, List } from '@mantine/core';
 
 const Project = () => {
     const [issues, setIssues] = useState<Map<string, TIssue>>(new Map());
@@ -20,7 +20,7 @@ const Project = () => {
         getData();
     }, []);
 
-    async function handleDelete(e: MouseEvent<HTMLButtonElement>, issueId: string){
+    async function handleDelete(issueId: string){
         try{
             await invoke('delete_issue', {
                 issueId,
@@ -55,14 +55,14 @@ const Project = () => {
 
         for(let [key, value] of issues){
             list.push(
-                <li key={`${key}`}>
+                <List.Item key={`${key}`}>
                     <Link to={`/issue/${projectId}/${key}`}>
-                        <h2>{value.title}</h2>
+                        {value.title}
                     </Link>
-                    <Button onClick={(e: MouseEvent<HTMLButtonElement>) => (
-                        handleDelete(e, key)
+                    <Button onClick={() => (
+                        handleDelete(key)
                     )}>🗑️</Button>
-                    <Button onClick={(e: MouseEvent<HTMLButtonElement>) => {
+                    <Button onClick={() => {
                         setEdit({ issueId: key, isEdit: !edit.isEdit });
                     }}>✏️</Button>
                     {
@@ -96,7 +96,7 @@ const Project = () => {
                             </form>
                             : null
                     }
-                </li>
+                </List.Item>
             );
         }
 
@@ -110,18 +110,18 @@ const Project = () => {
 
                 <fieldset>
                     <legend>
-                        <h1>{projects.get(projectId!)!.name || 'Issues'}</h1>
+                        {projects.get(projectId!)!.name || 'Issues'}
                     </legend>
 
-                    <ul>
-                        {list ?? <li key="0">No projects</li>}
-                    </ul>
+                    <List>
+                        {list ?? <List.Item key="0">No projects</List.Item>}
+                    </List>
                 </fieldset>
             </div>
         );
     }catch(error){
         console.error(error);
-        return <h1>ERROR</h1>;
+        return "ERROR";
     }
 };
 

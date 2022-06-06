@@ -1,8 +1,8 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { TProject } from './types';
 import { appWindow } from '@tauri-apps/api/window';
-import { FormEvent, MouseEvent, useEffect, useState } from 'react';
-import { Button, Input } from '@mantine/core';
+import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from 'react';
+import { Box, Button, Input, List } from '@mantine/core';
 import { Link } from 'react-router-dom';
 
 const Projects = () => {
@@ -52,52 +52,63 @@ const Projects = () => {
     }
 
     try{
+        const [edit, setEdit] = useState({ projectId: '', isEdit: false });
         appWindow.setTitle('Projects');
         const list = [];
+        let index = 0;
 
         for(const [key, value] of projects){
             list.push(
-                <li key={key}>
+                <List.Item key={index}>
                     <Link to={`/project/${key}`}>
-                        <h1>{value.name}</h1>
+                        {value.name}
                     </Link>
                     <Button
                         onClick={(e: MouseEvent<HTMLButtonElement>) => (
                             handleDelete(e, key
                             ))}>🗑️</Button>
-                    <Button onClick={(e: MouseEvent<HTMLButtonElement>) => {
-
+                    <Button onClick={() => {
+                        setEdit({ projectId: key, isEdit: !edit.isEdit });
                     }}>✏️</Button>
-                    <form onSubmit={e => {
-                        handleEditSubmit(e, editName, key);
-                    }}>
-                        <input type="text" placeholder="title" onChange={e => setEditName(e.target.value)}/>
-                        <Button type="submit" hidden></Button>
-                    </form>
-                </li>
+                    {
+                        edit.isEdit && edit.projectId === key
+                            ?
+                                <form onSubmit={e => {
+                                    handleEditSubmit(e, editName, key);
+                                    setEdit({ projectId: key, isEdit: false });
+                                }}>
+                                    <Input type="text" placeholder="title" onChange={(e: ChangeEvent) => setEditName((e.target as HTMLInputElement).value)}/>
+                                    <Button type="submit" hidden></Button>
+                                </form>
+                            : null
+                    }
+                </List.Item>
             );
+            index++
         }
 
         return (
             <div>
-                <form onSubmit={handleProjectSubmit}>
-                    <Input
-                        type="text"
-                        onChange={(e: FormEvent) => {
-                            setName((e.target as HTMLInputElement).value);
-                        }}
-                        required
-                    />
-                    <Button type="submit">Create</Button>
-                </form>
-                <ul>
-                    {list ?? <li key="0">No projects</li>}
-                </ul>
+                <Box>
+                    <form onSubmit={handleProjectSubmit}>
+                        <Input
+                            type="text"
+                            onChange={(e: FormEvent) => {
+                                setName((e.target as HTMLInputElement).value);
+                            }}
+                            required
+                        />
+                        <Button type="submit">Create</Button>
+                    </form>
+                </Box>
+                <List>
+                    {list ?? <List.Item key="0">No projects</List.Item>}
+                </List>
             </div>
         );
     }catch(error){
         console.error(error);
-        return <h1>ERROR</h1>;
+        return "ERROR";
     }
 };
 
