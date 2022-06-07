@@ -1,6 +1,6 @@
 use tauri::{CustomMenuItem, Menu, MenuItem, Submenu, WindowMenuEvent};
 
-pub fn generate_menu() -> Menu {
+pub fn generate_menu() -> Menu{
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let close = CustomMenuItem::new("close".to_string(), "Close");
     let submenu = Submenu::new("File", Menu::new().add_item(quit).add_item(close));
@@ -12,8 +12,8 @@ pub fn generate_menu() -> Menu {
     return menu;
 }
 
-pub fn menu_handler(event: WindowMenuEvent) {
-    match event.menu_item_id() {
+pub fn menu_handler(event: WindowMenuEvent){
+    match event.menu_item_id(){
         "quit" => {
             std::process::exit(0);
         }

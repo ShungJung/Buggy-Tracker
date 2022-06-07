@@ -8,11 +8,9 @@ use tauri::Manager;
 use commands::crud_issue::{create_issue, delete_issue, read_issue, update_issue};
 use commands::crud_project::{create_project, delete_project, read_project, update_project};
 use menu::{generate_menu, menu_handler};
-use test::test;
 
 pub mod commands;
 pub mod menu;
-pub mod test;
 
 #[derive(Debug)]
 pub struct AppState{
@@ -31,8 +29,7 @@ fn main(){
             create_project,
             read_project,
             update_project,
-            delete_project,
-            test
+            delete_project
         ])
         .setup(|app| {
             let state = AppState {
