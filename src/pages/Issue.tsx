@@ -21,9 +21,11 @@ const Issue = () => {
         appWindow.setTitle(issue.title ?? 'Project');
 
         return (
-            <div id="issue">
-                <h1 id="title">{issue.title}</h1>
-                <p id="description">{issue.description}</p>
+            <div>
+                <h1>{issue.title}</h1>
+                <p>{issue.description}</p>
+                <h3>{issue.priority}</h3>
+                <h3>{issue.deadline.toDateString()}</h3>
             </div>
         );
     }catch(error){

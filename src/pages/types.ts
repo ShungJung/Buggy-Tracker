@@ -6,4 +6,6 @@ export interface TProject{
 export interface TIssue{
     title: string;
     description: string;
+    priority: 'None' | 'Low' | 'Medium' | 'High';
+    deadline: Date;
 }

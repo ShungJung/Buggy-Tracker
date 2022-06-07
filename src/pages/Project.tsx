@@ -8,7 +8,7 @@ import { Button, Input, List } from '@mantine/core';
 const Project = () => {
     const [issues, setIssues] = useState<Map<string, TIssue>>(new Map());
     const [projects, setProjects] = useState<Map<string, TProject>>(new Map());
-    const [editIssue, setEditIssue] = useState<TIssue>({ title: '', description: '' });
+    const [editIssue, setEditIssue] = useState<TIssue>({} as TIssue);
 
     const { projectId } = useParams();
 
@@ -53,11 +53,11 @@ const Project = () => {
 
         const list = [];
 
-        for(let [key, value] of issues){
+        for(let [key, issue] of issues){
             list.push(
                 <List.Item key={`${key}`}>
                     <Link to={`/issue/${projectId}/${key}`}>
-                        {value.title}
+                        {issue.title}
                     </Link>
                     <Button onClick={() => (
                         handleDelete(key)
@@ -78,7 +78,9 @@ const Project = () => {
                                     onChange={(e: ChangeEvent) =>
                                         setEditIssue({
                                             title: (e.target as HTMLInputElement).value,
-                                            description: editIssue.description
+                                            description: editIssue.description,
+                                            priority: editIssue.priority,
+                                            deadline: editIssue.deadline,
                                         })}
                                     required
                                 />
@@ -88,7 +90,9 @@ const Project = () => {
                                     onChange={(e: ChangeEvent) =>
                                         setEditIssue({
                                             title: editIssue.title,
-                                            description: (e.target as HTMLInputElement).value
+                                            description: (e.target as HTMLInputElement).value,
+                                            priority: editIssue.priority,
+                                            deadline: editIssue.deadline,
                                         })}
                                     required
                                 />
@@ -96,6 +100,8 @@ const Project = () => {
                             </form>
                             : null
                     }
+                    <h3>{issue.priority}</h3>
+                    <h3>{issue.deadline.toDateString()}</h3>
                 </List.Item>
             );
         }

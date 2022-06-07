@@ -1,4 +1,5 @@
-import { Button, TextInput } from '@mantine/core';
+import { Button, TextInput, SegmentedControl } from '@mantine/core';
+import { DatePicker } from '@mantine/dates';
 import { invoke } from '@tauri-apps/api/tauri';
 import { FormEvent, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -6,6 +7,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 const CreateIssue = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [priority, setPriority] = useState('None');
+    const [deadline, setDeadline] = useState<Date | null>();
     const navigate = useNavigate();
     const { projectId } = useParams();
 
@@ -36,6 +39,21 @@ const CreateIssue = () => {
                 onChange={e => {
                     setDescription(e.target.value);
                 }}
+            />
+            <SegmentedControl
+                size='lg'
+                data={[
+                    { value: 'None', label: 'None' },
+                    { value: 'Low', label: 'Low' },
+                    { value: 'Medium', label: 'Medium' },
+                    { value: 'High', label: 'High' },
+                ]}
+                onChange={setPriority} 
+            />
+            <DatePicker
+                label="Deadline:"
+                placeholder='Deadline'
+                onChange={setDeadline}
             />
             <Button type="submit">Create</Button>
         </form>
