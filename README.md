@@ -72,12 +72,26 @@ acknowledgements section.
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally. To get a local copy up and
-running follow these simple example steps.
+_If you are new to this project, WELCOME! These are the steps to get started._
+
+Copy and paste the code below to your terminal window to install all dependencies or devDependencies from a package.json file. 
+
+*
+```sh
+npm i
+```
+After you have done the first step, you now want to add tauri to your project. Copy paste the below code into your terminal and hit "enter".
+
+*
+```sh
+yarn tauri build
+```
+For those who don't know what is tauri, Tauri is a framework for building tiny, blazing fast binaries for all major desktop platforms. Developers can integrate any front-end framework that compiles to HTML, JS and CSS for building their user interface. The backend of the application is a rust-sourced binary with an API that the front-end can interact with. 
+
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+_To install new dependencies, or to update existing dependencies, copy the "npm install npm@latest-g" below and paste it in your terminal and hit "enter" on your keyboard._
 
 *
 ```sh
@@ -86,33 +100,21 @@ npm install npm@latest -g
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't
-rely on any external dependencies or services._
+_copy the code below to install the api and git clone._
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/ShungJung/Buggy-Tracker.git
    ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
+3. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos
-work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://google.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+### Usage
 
 ## Roadmap
 
@@ -122,6 +124,7 @@ _For more examples, please refer to the [Documentation](https://google.com)_
 - [ ] Publish application
 - [ ] Multi-language Support
     - [ ] Chinese
+    - [ ] Korean
     - [ ] Spanish
 
 See the [open issues](https://github.com/ShungJung/Buggy-Tracker/issues) for a full list of proposed features (and known
@@ -153,8 +156,19 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-ShungJung - [dawger#0657](https://discord.com) - shung.jung.1@gmail.com KielKing
-- [@GitHub](https://github.com/KielKing) - me@kielking.com
+ShungJung - [dawger#0657](https://discord.com) - shung.jung.1@gmail.com 
+
+KielKing - [@GitHub](https://github.com/KielKing) - me@kielking.com
+
+Mayoshi™-[@GitHub](https://github.com/rowanhendricks) - Rowan.hendricks511@gmail.com
+
+or feel free to hit us up on whatsapp 
+
++60103731698 (SJ)
+
++62 812-3904-3518 (EK)
+
++60127187929 (RH)
 
 Project Link: [https://github.com/ShungJung/Buggy-Tracker](https://github.com/ShungJung/Buggy-Tracker)
 
