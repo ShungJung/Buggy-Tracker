@@ -160,7 +160,7 @@ ShungJung - [dawger#0657](https://discord.com) - shung.jung.1@gmail.com
 
 KielKing - [@GitHub](https://github.com/KielKing) - me@kielking.com
 
-Mayoshi™-[@GitHub](https://github.com/rowanhendricks) - Rowan.hendricks511@gmail.com
+Mayoshi™ - [@GitHub](https://github.com/rowanhendricks) - Rowan.hendricks511@gmail.com
 
 or feel free to hit us up on whatsapp 
 
