@@ -7,7 +7,7 @@ import {
     Routes
 } from "react-router-dom"
 
-function Sidebar() {
+const Sidebar = () => {
     const [opened, setOpened] = useState(false);
     const theme = useMantineTheme();
 
@@ -17,13 +17,12 @@ function Sidebar() {
             fixed
             navbar={
                 <Navbar
-                    padding="md"
                     hiddenBreakpoint="sm"
                     hidden={!opened}
-                    width={{ sm: 500, lg: 400 }}
+                    width={{ sm: 300, lg: 200 }}
                 >
                     <Navbar.Section>
-                        <Text>Hello this is title</Text>
+                        <Text>Buggy-Tracker</Text>
                     </Navbar.Section>
                     <Navbar.Section grow mt="lg">
                         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -39,12 +38,12 @@ function Sidebar() {
                         </div>
                     </Navbar.Section>
                     <Navbar.Section>
-                        <text>Footer</text>
+                        <text>SJ</text>
                     </Navbar.Section>
                 </Navbar>
             }
             header={
-                <Header height={50} padding="md">
+                <Header height={50}>
                     {/* Handle other responsive styles with MediaQuery component or createStyles function */}
                     <div style={{ display: 'flex', justifyContent: "space-between" }}>
                         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
