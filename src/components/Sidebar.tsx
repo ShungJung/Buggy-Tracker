@@ -6,6 +6,8 @@ import {
     Route,
     Routes
 } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiagramProject, faTicket, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = () => {
     const [opened, setOpened] = useState(false);
@@ -27,13 +29,13 @@ const Sidebar = () => {
                     <Navbar.Section grow mt="lg">
                         <div style={{ display: "flex", flexDirection: "column" }}>
                             <Text component={Link} variant="link" to="/Home">
-                                Home page
-                            </Text>
-                            <Text component={Link} variant="link" to="/CreateIssue">
-                                Create issue page
+                                <FontAwesomeIcon icon={faDiagramProject} />
                             </Text>
                             <Text component={Link} variant="link" to="/Issue">
-                                Issue page
+                                <FontAwesomeIcon icon={faTicket} />
+                            </Text>
+                            <Text component={Link} variant="link" to="/Createissue">
+                                <FontAwesomeIcon icon={faPlus} />
                             </Text>
                         </div>
                     </Navbar.Section>
