@@ -1,4 +1,4 @@
-import { TIssue } from './types';
+import { TIssue } from '../types';
 import { appWindow } from '@tauri-apps/api/window';
 import { invoke } from '@tauri-apps/api/tauri';
 import { useParams } from 'react-router-dom';

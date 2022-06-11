@@ -1,5 +1,5 @@
 import { invoke } from '@tauri-apps/api';
-import { TIssue, TProject } from './types';
+import { TIssue, TProject } from '../types';
 import { appWindow } from '@tauri-apps/api/window';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
