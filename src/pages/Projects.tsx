@@ -108,7 +108,7 @@ const Projects = () => {
         );
     }catch(error){
         console.error(error);
-        return "ERROR";
+        return <h1>ERROR</h1>;
     }
 };
 
