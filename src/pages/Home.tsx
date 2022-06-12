@@ -1,11 +1,8 @@
 import ProjectList from '../components/ProjectList';
-import { appWindow } from '@tauri-apps/api/window';
-import Sidebar from '../components/sidebar';
+import Sidebar from '../components/Sidebar';
 
 
-const Home = () => {
-    appWindow.setTitle("Home");
-    
+const Home = () => {    
     return (
         <div>
             <h1>Home</h1>

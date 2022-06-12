@@ -1,6 +1,5 @@
 import { invoke } from '@tauri-apps/api';
 import { TIssue, TProject } from '../types';
-import { appWindow } from '@tauri-apps/api/window';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button, Input, List } from '@mantine/core';
@@ -47,27 +46,25 @@ const Project = () => {
         }
     }
 
-    try{
-        const [edit, setEdit] = useState({ issueId: '', isEdit: false });
-        appWindow.setTitle(projects.get(projectId!)!.name ?? 'Project');
+    const [edit, setEdit] = useState({ issueId: '', isEdit: false });
 
-        const list = [];
+    const list = [];
 
-        for(let [key, issue] of issues){
-            list.push(
-                <List.Item key={`${key}`}>
-                    <Link to={`/issue/${projectId}/${key}`}>
-                        {issue.title}
-                    </Link>
-                    <Button onClick={() => (
-                        handleDelete(key)
-                    )}>🗑️</Button>
-                    <Button onClick={() => {
-                        setEdit({ issueId: key, isEdit: !edit.isEdit });
-                    }}>✏️</Button>
-                    {
-                        edit.isEdit && edit.issueId === key
-                            ?
+    for(let [key, issue] of issues){
+        list.push(
+            <List.Item key={`${key}`}>
+                <Link to={`/issue/${projectId}/${key}`}>
+                    {issue.title}
+                </Link>
+                <Button onClick={() => (
+                    handleDelete(key)
+                )}>🗑️</Button>
+                <Button onClick={() => {
+                    setEdit({ issueId: key, isEdit: !edit.isEdit });
+                }}>✏️</Button>
+                {
+                    edit.isEdit && edit.issueId === key
+                        ?
                             <form onSubmit={e => {
                                 handleEditSubmit(e, editIssue.title, editIssue.description, key);
                                 setEdit({ issueId: '', isEdit: false });
@@ -98,37 +95,31 @@ const Project = () => {
                                 />
                                 <Button type="submit" hidden></Button>
                             </form>
-                            : null
-                    }
-                    <h3>{issue.priority}</h3>
-                    <h3>{issue.deadline.toDateString()}</h3>
-                </List.Item>
-            );
-        }
-
-        return (
-            <div>
-                <Input type="text" placeholder="Search..."/>
-                <Button
-                    component={Link}
-                    to={`/createIssue/${projectId}`}
-                > Create Issue </Button>
-
-                <fieldset>
-                    <legend>
-                        {projects.get(projectId!)!.name || 'Issues'}
-                    </legend>
-
-                    <List>
-                        {list ?? <List.Item key="0">No projects</List.Item>}
-                    </List>
-                </fieldset>
-            </div>
+                        : null
+                }
+                <h3>{issue.priority}</h3>
+                <h3>{issue.deadline.toDateString()}</h3>
+            </List.Item>
         );
-    }catch(error){
-        console.error(error);
-        return <h1>ERROR</h1>;
     }
+    
+    return (
+        <div>
+            <Input type="text" placeholder="Search..."/>
+            <Button
+                component={Link}
+                to={`/createIssue/${projectId}`}
+            > Create Issue </Button>
+            <fieldset>
+                <legend>
+                    {projects.get(projectId!)!.name || 'Issues'}
+                </legend>
+                <List>
+                    {list ?? <List.Item key="0">No projects</List.Item>}
+                </List>
+            </fieldset>
+        </div>
+    );
 };
 
 export default Project;

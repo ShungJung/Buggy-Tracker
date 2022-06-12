@@ -1,11 +1,19 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Project from './pages/Project';
 import CreateIssue from './pages/CreateIssue';
 import Issue from './pages/Issue';
 import Projects from './pages/Projects';
 import Home from './pages/Home';
+import { useEffect } from 'react';
+import { appWindow } from '@tauri-apps/api/window';
 
 const App = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        appWindow.setTitle(location.pathname);
+    }, [location]);
+
     return (
         <BrowserRouter>
             <Routes>
