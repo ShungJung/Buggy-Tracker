@@ -11,7 +11,7 @@ const ProjectList = () => {
 
     useEffect(() => {
         const getData = async() => {
-            setProjects(new Map(Object.entries(await invoke('read_project'))) ?? new Map());
+            setProjects(new Map(Object.entries(await invoke('get_projects'))) ?? new Map());
         };
         getData();
     }, []);
@@ -20,7 +20,7 @@ const ProjectList = () => {
         e.preventDefault();
         try{
             await invoke('create_project', { name });
-            setProjects(new Map(Object.entries(await invoke('read_project'))) ?? new Map());
+            setProjects(new Map(Object.entries(await invoke('get_projects'))) ?? new Map());
         }catch(error){
             console.error(error);
         }
@@ -31,7 +31,7 @@ const ProjectList = () => {
             await invoke('delete_project', {
                 projectId,
             });
-            setProjects(new Map(Object.entries(await invoke('read_project'))) ?? new Map());
+            setProjects(new Map(Object.entries(await invoke('get_projects'))) ?? new Map());
         }catch(error){
             console.error(error);
         }
@@ -44,7 +44,7 @@ const ProjectList = () => {
                 name,
                 projectId,
             });
-            setProjects(new Map(Object.entries(await invoke('read_project'))) ?? new Map());
+            setProjects(new Map(Object.entries(await invoke('get_projects'))) ?? new Map());
         }catch(error){
             console.error(error);
         }

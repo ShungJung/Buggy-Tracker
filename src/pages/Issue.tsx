@@ -9,7 +9,7 @@ const Issue = () => {
 
     useEffect(() => {
         const getData = async() => {
-            setIssues(new Map(Object.entries(await invoke('read_issue', { projectId }))) ?? new Map());
+            setIssues(new Map(Object.entries(await invoke('get_issues', { projectId }))) ?? new Map());
         };
         getData();
     }, []);
