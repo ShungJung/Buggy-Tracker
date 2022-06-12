@@ -1,4 +1,4 @@
-import { BackgroundImage, Image, Navbar, Text, useMantineTheme, Tooltip, Button } from '@mantine/core';
+import { BackgroundImage, Image, Navbar, Text, useMantineTheme, Tooltip, Button, Center } from '@mantine/core';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { faDiagramProject, faTicket, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -10,13 +10,26 @@ const Sidebar = () => {
     return (
         <Navbar
             hiddenBreakpoint="sm"
-            width={{ sm: 300, lg: 200 }}
+            width={{ sm: 256, lg: 256 }}
         >
             <Navbar.Section>
-                 <Image src={BuggyLogo} width={48} height={48}></Image>
+                 
+
             </Navbar.Section>
             <Navbar.Section grow mt="lg">
                 <div style={{ display: "flex", flexDirection: "column" }}>
+
+                    <Text component={Link} variant="link" to="/">
+                    <Button variant="filled" color='white' size='xs' styles={{
+                        root: {
+                            backgroundColor: "unset"
+                        }}
+                    }  >
+                        
+                        <Image src={BuggyLogo} width={50} height={50}  ></Image>
+                    </Button>
+                    </Text>
+
                     <Text component={Link} variant="link" to="/projects">
                         
                         <Tooltip 
@@ -24,11 +37,12 @@ const Sidebar = () => {
                             color="black" 
                             withArrow
                             >
-                            <Button variant="filled" color='blue' size='xl'>
-                                <FontAwesomeIcon icon={faDiagramProject} size="3x" color="black" />
+                            <Button variant="filled" color='blue' size='xs' >
+                                <FontAwesomeIcon icon={faDiagramProject} size="2x" color="black" align="left" />
                             </Button>
                         </Tooltip>                   
                      </Text>
+
                     <Text component={Link} variant="link" to="/issue">
                         
                         <Tooltip
@@ -36,8 +50,8 @@ const Sidebar = () => {
                             color="black"
                             withArrow
                             >
-                            <Button variant='filled' color='yellow' size='xl'>
-                                <FontAwesomeIcon icon={faTicket} size="3x" color="black" />
+                            <Button variant='filled' color='yellow' size='xs'>
+                                <FontAwesomeIcon icon={faTicket} size="2x" color="black" align="left" />
                             </Button>
                         </Tooltip>
                     </Text>
@@ -48,8 +62,8 @@ const Sidebar = () => {
                             color="black"
                             withArrow
                             >
-                            <Button variant="filled" color='green' size="sm">
-                                 <FontAwesomeIcon icon={faPlus} size="3x" color="black" />
+                            <Button variant="filled" color='green' size="xs">
+                                 <FontAwesomeIcon icon={faPlus} size="2x" color="black" align="left" />
                             </Button>
                         </Tooltip>
                     </Text>
