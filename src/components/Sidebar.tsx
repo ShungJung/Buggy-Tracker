@@ -16,7 +16,13 @@ const Sidebar = () => {
     return (
         <AppShell
             navbarOffsetBreakpoint="sm"
+            asideOffsetBreakpoint="sm"
             fixed
+            styles={{
+                main: {
+                    background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+                },
+            }}
             navbar={
                 <Navbar
                     hiddenBreakpoint="sm"
@@ -24,7 +30,7 @@ const Sidebar = () => {
                     width={{ sm: 300, lg: 200 }}
                 >
                     <Navbar.Section>
-                        <Text>Buggy-Tracker</Text>
+                        <Text>Content</Text>
                     </Navbar.Section>
                     <Navbar.Section grow mt="lg">
                         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -57,7 +63,7 @@ const Sidebar = () => {
                                 mr="xl"
                             />
                         </MediaQuery>
-                        <Text>Application header</Text>
+                        <Text>Buggy-Tracker</Text>
 
 
                     </div>
