@@ -1,11 +1,6 @@
 import { useState } from 'react';
 import { AppShell, Burger, Header, MediaQuery, Navbar, Text, useMantineTheme } from '@mantine/core';
-import {
-    BrowserRouter as Router,
-    Link,
-    Route,
-    Routes
-} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const Sidebar = () => {
     const [opened, setOpened] = useState(false);
