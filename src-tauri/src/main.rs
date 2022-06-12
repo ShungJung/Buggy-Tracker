@@ -7,7 +7,7 @@ use std::path::PathBuf;
 use tauri::Manager;
 use commands::crud_issue::{create_issue, delete_issue, read_issue, update_issue};
 use commands::crud_project::{create_project, delete_project, read_project, update_project};
-use menu::{generate_menu, menu_handler};
+//use menu::{generate_menu, menu_handler};
 
 pub mod commands;
 pub mod menu;
@@ -19,8 +19,8 @@ pub struct AppState{
 
 fn main(){
     tauri::Builder::default()
-        .menu(generate_menu())
-        .on_menu_event(menu_handler)
+        //.menu(generate_menu())
+        //.on_menu_event(menu_handler)
         .invoke_handler(tauri::generate_handler![
             create_issue,
             read_issue,
