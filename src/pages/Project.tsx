@@ -13,8 +13,8 @@ const Project = () => {
 
     useEffect(() => {
         const getData = async() => {
-            setProjects(new Map(Object.entries(await invoke('read_project'))) ?? new Map());
-            setIssues(new Map(Object.entries(await invoke('read_issue', { projectId }))) ?? new Map());
+            setProjects(new Map(Object.entries(await invoke('get_projects'))) ?? new Map());
+            setIssues(new Map(Object.entries(await invoke('get_issues', { projectId }))) ?? new Map());
         };
         getData();
     }, []);
@@ -25,7 +25,7 @@ const Project = () => {
                 issueId,
                 projectId,
             });
-            setIssues(new Map(Object.entries(await invoke('read_issue', { projectId }))) ?? new Map());
+            setIssues(new Map(Object.entries(await invoke('get_issues', { projectId }))) ?? new Map());
         }catch(error){
             console.error(error);
         }
@@ -40,7 +40,7 @@ const Project = () => {
                 issueId,
                 projectId,
             });
-            setIssues(new Map(Object.entries(await invoke('read_issue', { projectId }))) ?? new Map());
+            setIssues(new Map(Object.entries(await invoke('get_issues', { projectId }))) ?? new Map());
         }catch(error){
             console.error(error);
         }
