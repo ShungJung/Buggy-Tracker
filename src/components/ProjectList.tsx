@@ -1,6 +1,5 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { TProject } from '../types';
-import { appWindow } from '@tauri-apps/api/window';
 import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from 'react';
 import { Box, Button, Input, List } from '@mantine/core';
 import { Link } from 'react-router-dom';
