@@ -10,7 +10,7 @@ const Sidebar = () => {
     return (
         <Navbar
             hiddenBreakpoint="sm"
-            width={{ sm: 256, lg: 256 }}
+            width={{ sm: 256, lg: 864 }}
         >
             <Navbar.Section>
                  
