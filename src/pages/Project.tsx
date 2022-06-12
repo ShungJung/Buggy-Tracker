@@ -1,16 +1,26 @@
-import { invoke } from '@tauri-apps/api';
-import { TIssue, TProject } from '../types';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Button, Input, List } from '@mantine/core';
+import { Button, TextInput, SegmentedControl } from '@mantine/core';
+import { DatePicker } from '@mantine/dates';
+import { invoke } from '@tauri-apps/api/tauri';
+import { FormEvent, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const Project = () => {
-    const [issues, setIssues] = useState<Map<string, TIssue>>(new Map());
-    const [projects, setProjects] = useState<Map<string, TProject>>(new Map());
-    const [editIssue, setEditIssue] = useState<TIssue>({} as TIssue);
-
+const CreateIssue = () => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [priority, setPriority] = useState('None');
+    const [deadline, setDeadline] = useState<Date | null>();
+    const navigate = useNavigate();
     const { projectId } = useParams();
 
+<<<<<<< HEAD
+    async function handleSubmit(e: FormEvent){
+        e.preventDefault();
+        try{
+            await invoke('create_issue', {
+                title,
+                description,
+                projectId
+=======
     useEffect(() => {
         const getData = async() => {
             setProjects(new Map(Object.entries(await invoke('get_projects'))) ?? new Map());
@@ -38,13 +48,16 @@ const Project = () => {
                 ...issue,
                 issueId,
                 projectId,
+>>>>>>> d69e16d9846013eb7da9c67fa3dba02c70bb98d4
             });
-            setIssues(new Map(Object.entries(await invoke('get_issues', { projectId }))) ?? new Map());
+            navigate(`/project/${projectId}`, { replace: true });
         }catch(error){
             console.error(error);
         }
     }
 
+<<<<<<< HEAD
+=======
     const [edit, setEdit] = useState({ issueId: '', isEdit: false });
 
     const list = [];
@@ -106,23 +119,39 @@ const Project = () => {
         );
     }
     
+>>>>>>> d69e16d9846013eb7da9c67fa3dba02c70bb98d4
     return (
-        <div>
-            <Input type="text" placeholder="Search..."/>
-            <Button
-                component={Link}
-                to={`/createIssue/${projectId}`}
-            > Create Issue </Button>
-            <fieldset>
-                <legend>
-                    {projects.get(projectId!)?.name || 'Issues'}
-                </legend>
-                <List>
-                    {list ?? <List.Item key="0">No projects</List.Item>}
-                </List>
-            </fieldset>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <TextInput
+                label="Title:"
+                onChange={e => {
+                    setTitle(e.target.value);
+                }}
+            />
+            <TextInput
+                label="Description:"
+                onChange={e => {
+                    setDescription(e.target.value);
+                }}
+            />
+            <SegmentedControl
+                size='lg'
+                data={[
+                    { value: 'None', label: 'None' },
+                    { value: 'Low', label: 'Low' },
+                    { value: 'Medium', label: 'Medium' },
+                    { value: 'High', label: 'High' },
+                ]}
+                onChange={setPriority} 
+            />
+            <DatePicker
+                label="Deadline:"
+                placeholder='Deadline'
+                onChange={setDeadline}
+            />
+            <Button type="submit">Create</Button>
+        </form>
     );
 };
 
-export default Project;
+export default CreateIssue;

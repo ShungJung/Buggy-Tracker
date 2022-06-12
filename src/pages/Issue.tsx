@@ -2,7 +2,8 @@ import { TIssue } from '../types';
 import { invoke } from '@tauri-apps/api/tauri';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import { Box } from '@mantine/core';
+import MainLayout from 'layouts/MainLayout';
 const Issue = () => {
     const [issues, setIssues] = useState<Map<string, TIssue>>(new Map());
     const { projectId, issueId } = useParams();

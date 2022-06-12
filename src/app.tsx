@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Project from './pages/Project';
-import CreateIssue from './pages/CreateIssue';
+import CreateIssue from './pages/Project';
 import Issue from './pages/Issue';
 import Projects from './pages/Projects';
 import Home from './pages/Home';
