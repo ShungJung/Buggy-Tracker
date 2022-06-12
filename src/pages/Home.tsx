@@ -1,14 +1,13 @@
 import ProjectList from '../components/ProjectList';
-import Sidebar from '../components/Sidebar';
-
+import MainLayout from '../layouts/MainLayout';
 
 const Home = () => {    
     return (
         <div>
+            <MainLayout/>
             <h1>Home</h1>
             <p>This is the home page</p>
             <ProjectList/>
-            <Sidebar/>
         </div>
     );
 };
