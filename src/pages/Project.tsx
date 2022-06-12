@@ -31,12 +31,11 @@ const Project = () => {
         }
     }
 
-    async function handleEditSubmit(e: FormEvent, title: string, description: string, issueId: string){
+    async function handleEditSubmit(e: FormEvent, issue: TIssue,issueId: string){
         e.preventDefault();
         try{
             await invoke('update_issue', {
-                title,
-                description,
+                ...issue,
                 issueId,
                 projectId,
             });
@@ -66,7 +65,11 @@ const Project = () => {
                     edit.isEdit && edit.issueId === key
                         ?
                             <form onSubmit={e => {
-                                handleEditSubmit(e, editIssue.title, editIssue.description, key);
+                                handleEditSubmit(
+                                    e,
+                                    editIssue,
+                                    key
+                                );
                                 setEdit({ issueId: '', isEdit: false });
                             }}>
                                 <Input
@@ -97,6 +100,8 @@ const Project = () => {
                             </form>
                         : null
                 }
+                <p>{issue.priority}</p>
+                <p>{issue.deadline}</p>
             </List.Item>
         );
     }
