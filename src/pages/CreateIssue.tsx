@@ -18,6 +18,8 @@ const CreateIssue = () => {
             await invoke('create_issue', {
                 title,
                 description,
+                priority,
+                deadline: deadline?.toDateString(),
                 projectId
             });
             navigate(`/project/${projectId}`, { replace: true });
