@@ -20,8 +20,6 @@ const Issue = () => {
         <div>
             <h1>{issue.title}</h1>
             <p>{issue.description}</p>
-            <h3>{issue.priority}</h3>
-            <h3>{issue.deadline.toDateString()}</h3>
         </div>
     );
 };
