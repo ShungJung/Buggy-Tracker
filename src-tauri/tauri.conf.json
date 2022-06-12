@@ -51,7 +51,7 @@
             }
         },
         "security": {
-            "csp": null
+            "csp": "default-src self; img-src 'self' data: https:; font-src 'self' 'https://fonts.googleapis.com 4'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self'; frame-ancestors 'self'; connect-src 'self'"
         },
         "updater": {
             "active": false

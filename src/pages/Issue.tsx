@@ -15,12 +15,14 @@ const Issue = () => {
         getData();
     }, []);
 
-    const issue: TIssue = issues.get(issueId!)! ?? { title: '', description: '' };
+    const issue: TIssue = issues.get(issueId!)! ?? {} as TIssue;
 
     return (
         <div>
             <h1>{issue.title}</h1>
             <p>{issue.description}</p>
+            <p>{issue.priority}</p>
+            <p>{issue.deadline}</p>
         </div>
     );
 };

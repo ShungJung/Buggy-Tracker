@@ -37,8 +37,9 @@ const Project = () => {
             await invoke('update_issue', {
                 title,
                 description,
-                issueId,
-                projectId,
+                priority,
+                deadline: deadline?.toDateString(),
+                projectId
             });
             setIssues(new Map(Object.entries(await invoke('get_issues', { projectId }))) ?? new Map());
         }catch(error){

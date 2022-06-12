@@ -43,7 +43,7 @@ impl LocalDatabase {
     pub fn save(&self) {
         let data = &self.data;
         let file_path = &self.file_path;
-        match create_dir_all(&file_path) {
+        match create_dir_all(&file_path.parent().unwrap()) {
             Ok(()) => {}
             Err(e) => {
                 // TODO: Show error message in FE

@@ -9,10 +9,12 @@ use crate::entries::project::Project;
 pub struct Issue {
     pub title: String,
     pub description: String,
+    pub priority: String,
+    pub deadline: String,
 }
 
 impl Issue {
-    pub fn create(title: &String, description: &String, project_id: &String) {
+    pub fn create(title: &String, description: &String, priority: &String, deadline: &String, project_id: &String) {
         let mut database = Entry::get_database();
         let projects: &mut HashMap<String, Value> = database.get_all_mut();
         match projects.get_mut(project_id) {
@@ -24,6 +26,8 @@ impl Issue {
                     Issue {
                         title: title.to_string(),
                         description: description.to_string(),
+                        priority: priority.to_string(),
+                        deadline: deadline.to_string(),
                     },
                 );
                 *p = to_value(project).unwrap_or_default();
@@ -36,7 +40,7 @@ impl Issue {
         let project = Project::get(project_id);
         project.issues
     }
-    pub fn update(title: &String, description: &String, issue_id: &String, project_id: &String) {
+    pub fn update(title: &String, description: &String, priority: &String, deadline: &String, issue_id: &String, project_id: &String) {
         let mut database = Entry::get_database();
         let projects = database.get_all_mut();
         match projects.get_mut(project_id) {
@@ -47,6 +51,8 @@ impl Issue {
                     Some(i) => {
                         i.title = title.to_string();
                         i.description = description.to_string();
+                        i.priority = priority.to_string();
+                        i.deadline = deadline.to_string();
                     }
                     None => {}
                 }
