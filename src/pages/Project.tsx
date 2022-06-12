@@ -97,8 +97,6 @@ const Project = () => {
                             </form>
                         : null
                 }
-                <h3>{issue.priority}</h3>
-                <h3>{issue.deadline.toDateString()}</h3>
             </List.Item>
         );
     }
@@ -112,7 +110,7 @@ const Project = () => {
             > Create Issue </Button>
             <fieldset>
                 <legend>
-                    {projects.get(projectId!)!.name || 'Issues'}
+                    {projects.get(projectId!)?.name || 'Issues'}
                 </legend>
                 <List>
                     {list ?? <List.Item key="0">No projects</List.Item>}

@@ -50,65 +50,60 @@ const ProjectList = () => {
         }
     }
 
-    try{
-        const [edit, setEdit] = useState({ projectId: '', isEdit: false });
+    const [edit, setEdit] = useState({ projectId: '', isEdit: false });
+    const list = [];
 
-        const list = [];
-        let index = 0;
+    let index = 0;
 
-        for(const [key, value] of projects){
-            list.push(
-                <List.Item key={index}>
-                    <Link to={`/project/${key}`}>
-                        {value.name}
-                    </Link>
-                    <Button
-                        onClick={(e: MouseEvent<HTMLButtonElement>) => (
-                            handleDelete(e, key
-                            ))}>🗑️</Button>
-                    <Button onClick={() => {
-                        setEdit({ projectId: key, isEdit: !edit.isEdit });
-                    }}>✏️</Button>
-                    {
-                        edit.isEdit && edit.projectId === key
-                            ?
-                                <form onSubmit={e => {
-                                    handleEditSubmit(e, editName, key);
-                                    setEdit({ projectId: key, isEdit: false });
-                                }}>
-                                    <Input type="text" placeholder="title" onChange={(e: ChangeEvent) => setEditName((e.target as HTMLInputElement).value)}/>
-                                    <Button type="submit" hidden></Button>
-                                </form>
-                            : null
-                    }
-                </List.Item>
-            );
-            index++
-        }
-
-        return (
-            <div>
-                <Box>
-                    <form onSubmit={handleProjectSubmit}>
-                        <Input
-                            type="text"
-                            onChange={(e: FormEvent) => {
-                                setName((e.target as HTMLInputElement).value);
-                            }}
-                            required
-                        />
-                        <Button type="submit">Create</Button>
-                    </form>
-                </Box>
-                <List>
-                    {list ?? <List.Item key="0">No projects</List.Item>}
-                </List>
-            </div>
+    for(const [key, value] of projects){
+        list.push(
+            <List.Item key={index}>
+                <Link to={`/project/${key}`}>
+                    {value.name}
+                </Link>
+                <Button
+                    onClick={(e: MouseEvent<HTMLButtonElement>) => (
+                        handleDelete(e, key
+                        ))}>🗑️</Button>
+                <Button onClick={() => {
+                    setEdit({ projectId: key, isEdit: !edit.isEdit });
+                }}>✏️</Button>
+                {
+                    edit.isEdit && edit.projectId === key
+                        ?
+                            <form onSubmit={e => {
+                                handleEditSubmit(e, editName, key);
+                                setEdit({ projectId: key, isEdit: false });
+                            }}>
+                                <Input type="text" placeholder="title" onChange={(e: ChangeEvent) => setEditName((e.target as HTMLInputElement).value)}/>
+                                <Button type="submit" hidden></Button>
+                            </form>
+                        : null
+                }
+            </List.Item>
         );
-    }catch(error){
-        console.error(error);
-        return <h1>ERROR</h1>;
+        index++
     }
+
+    return (
+        <div>
+            <Box>
+                <form onSubmit={handleProjectSubmit}>
+                    <Input
+                        type="text"
+                        onChange={(e: FormEvent) => {
+                            setName((e.target as HTMLInputElement).value);
+                        }}
+                        required
+                    />
+                    <Button type="submit">Create</Button>
+                </form>
+            </Box>
+            <List>
+                {list ?? <List.Item key="0">No projects</List.Item>}
+            </List>
+        </div>
+    );
 };
 
 export default ProjectList;
