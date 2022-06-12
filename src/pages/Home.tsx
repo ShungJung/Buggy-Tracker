@@ -5,7 +5,7 @@ import MainLayout from '../layouts/MainLayout';
 const Home = () => {    
     return (
         <Box>
-            {/* <MainLayout/> */}
+            <MainLayout/>
             <ProjectList/>
         </Box>
     );
