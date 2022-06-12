@@ -1,5 +1,4 @@
 import ProjectList from '../components/ProjectList';
-import { appWindow } from '@tauri-apps/api/window';
 import Sidebar from '../components/Sidebar';
 
 
