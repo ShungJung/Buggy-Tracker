@@ -12,13 +12,6 @@ const CreateIssue = () => {
     const navigate = useNavigate();
     const { projectId } = useParams();
 
-    async function handleSubmit(e: FormEvent){
-        e.preventDefault();
-        try{
-            await invoke('create_issue', {
-                title,
-                description,
-                projectId
     useEffect(() => {
         const getData = async() => {
             setProjects(new Map(Object.entries(await invoke('get_projects'))) ?? new Map());
