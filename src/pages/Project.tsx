@@ -12,7 +12,6 @@ const CreateIssue = () => {
     const navigate = useNavigate();
     const { projectId } = useParams();
 
-<<<<<<< HEAD
     async function handleSubmit(e: FormEvent){
         e.preventDefault();
         try{
@@ -20,7 +19,6 @@ const CreateIssue = () => {
                 title,
                 description,
                 projectId
-=======
     useEffect(() => {
         const getData = async() => {
             setProjects(new Map(Object.entries(await invoke('get_projects'))) ?? new Map());
@@ -48,7 +46,6 @@ const CreateIssue = () => {
                 ...issue,
                 issueId,
                 projectId,
->>>>>>> d69e16d9846013eb7da9c67fa3dba02c70bb98d4
             });
             navigate(`/project/${projectId}`, { replace: true });
         }catch(error){
@@ -56,8 +53,6 @@ const CreateIssue = () => {
         }
     }
 
-<<<<<<< HEAD
-=======
     const [edit, setEdit] = useState({ issueId: '', isEdit: false });
 
     const list = [];
@@ -119,7 +114,6 @@ const CreateIssue = () => {
         );
     }
     
->>>>>>> d69e16d9846013eb7da9c67fa3dba02c70bb98d4
     return (
         <form onSubmit={handleSubmit}>
             <TextInput
