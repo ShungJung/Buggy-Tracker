@@ -39,7 +39,7 @@ const Project = () => {
                 issueId,
                 projectId,
             });
-            setIssues(new Map(Object.entries(await invoke('read_issue', { projectId }))) ?? new Map());
+            setIssues(new Map(Object.entries(await invoke('get_issue', { projectId }))) ?? new Map());
         }catch(error){
             console.error(error);
         }
