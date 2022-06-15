@@ -6,6 +6,7 @@ import {
     Header,
     Footer,
     Aside,
+    Box,
     Button,
     Image,
     Text,
@@ -14,21 +15,20 @@ import {
     useMantineTheme,
     Tooltip,
     Title,
+    UnstyledButton,
+    Group,
+    Avatar
 } from '@mantine/core';
 import { faDiagramProject, faTicket, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BuggyLogo from '../../images/BuggyLogo.svg';
+import { User } from'./_user';
 
 function Sidebar() {
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
     return (
         <AppShell
-            styles={{
-                main: {
-                    background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
-                },
-            }}
             navbarOffsetBreakpoint="sm"
             asideOffsetBreakpoint="sm"
             fixed
@@ -86,8 +86,13 @@ function Sidebar() {
                             </Tooltip>
                         </Text>
                     </div>
+                    <Text>SJ</Text>
+                    <Navbar.Section>
+                        <User />
+                    </Navbar.Section>
                 </Navbar>
             }
+
         >
             <Title order={1} align="center">
                 <Image src={BuggyLogo} width={50} height={50} align='center' >
