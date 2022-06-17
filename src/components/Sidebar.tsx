@@ -3,13 +3,10 @@ import { Link } from 'react-router-dom';
 import {
     AppShell,
     Navbar,
-<<<<<<< HEAD
     Header,
     Footer,
     Aside,
     Box,
-=======
->>>>>>> f425c22e30cd101170f463c39724d7b0f96e12e4
     Button,
     Image,
     Text,
@@ -18,7 +15,8 @@ import {
     Title,
     UnstyledButton,
     Group,
-    Avatar
+    Avatar,
+    ActionIcon
 } from '@mantine/core';
 import { faDiagramProject, faTicket, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -43,7 +41,7 @@ function Sidebar() {
                                 }
                             }
                             }   >
-                                <Image src={BuggyLogo}>
+                                <Image src={BuggyLogo} size={16}>
                                 </Image>
                             </Button>
                         </Text>
@@ -55,7 +53,9 @@ function Sidebar() {
                                 withArrow
                             >
                                 <Button variant="filled" color='blue' size='xs'>
-                                    <FontAwesomeIcon icon={faDiagramProject} size="2x" color="black"/>
+                                    <ActionIcon size="xl" radius="lg">
+                                        <FontAwesomeIcon icon={faDiagramProject} size="2x" color="black"/>
+                                    </ActionIcon>
                                 </Button>
                             </Tooltip>
                         </Text>
@@ -67,8 +67,9 @@ function Sidebar() {
                                 withArrow
                             >
                                 <Button variant='filled' color='yellow' size='xs'>
-                                    <FontAwesomeIcon icon={faTicket} size="2x" color="black"/>
-
+                                    <ActionIcon size="xl" radius="lg">
+                                        <FontAwesomeIcon icon={faTicket} size="2x" color="black"/>
+                                    </ActionIcon>
                                 </Button>
                             </Tooltip>
                         </Text>
@@ -81,12 +82,13 @@ function Sidebar() {
                                 withArrow
                             >
                                 <Button variant='filled' color='green' size='xs'>
-                                    <FontAwesomeIcon icon={faPlus} size="2x" color="black"/>
+                                    <ActionIcon size="xl" radius="lg">
+                                        <FontAwesomeIcon icon={faPlus} size="2x" color="black"/>
+                                    </ActionIcon>
                                 </Button>
                             </Tooltip>
                         </Text>
                     </div>
-                    <Text>SJ</Text>
                     <Navbar.Section>
                         <User />
                     </Navbar.Section>
@@ -95,7 +97,7 @@ function Sidebar() {
 
         >
             <Title order={1} align="center">
-                <Image src={BuggyLogo} width={50} height={50}>
+                <Image src={BuggyLogo} width={50} height={50} align="center">
                 </Image>
                 Buggy-Tracker
             </Title>
