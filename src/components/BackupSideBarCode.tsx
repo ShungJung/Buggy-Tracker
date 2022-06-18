@@ -1,77 +1,108 @@
-import { BackgroundImage, Image, Navbar, Text, useMantineTheme, AppShell, Tooltip, Button, Center, Header, Title } from '@mantine/core';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {
+    AppShell,
+    Navbar,
+    Header,
+    Footer,
+    Aside,
+    Box,
+    Button,
+    Image,
+    Text,
+    useMantineTheme,
+    Tooltip,
+    Title,
+    UnstyledButton,
+    Group,
+    Avatar,
+    ActionIcon
+} from '@mantine/core';
 import { faDiagramProject, faTicket, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BuggyLogo from '../../images/BuggyLogo.svg';
-import Appshell from './BackupSideBarCode';
-const Appshell = () => {
-    const [opened, setOpened] = useState(false);
+import { User } from'./_user';
+
+function Sidebar() {
     const theme = useMantineTheme();
+    const [opened, setOpened] = useState(false);
     return (
-        <Navbar
-            hiddenBreakpoint="sm"
-            width={{ sm: 864, lg: 256 }}
+        <AppShell
+            navbarOffsetBreakpoint="sm"
+            asideOffsetBreakpoint="sm"
+            fixed
+            navbar={
+                <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{sm:256,lg:256}}>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                        <Text component={Link} variant="link" to="/">
+                            <Button variant="filled" color='white' styles={{
+                                root: {
+                                    backgroundColor: 'unset',
+                                }
+                            }
+                            }   >
+                                <Image src={BuggyLogo} size={16}>
+                                </Image>
+                            </Button>
+                        </Text>
+
+                        <Text component={Link} variant="link" to="/projects">
+                            <Tooltip
+                                label="Projects"
+                                color="black"
+                                withArrow
+                            >
+                                <Button variant="filled" color='blue' size='xs'>
+                                    <ActionIcon size="xl" radius="lg">
+                                        <FontAwesomeIcon icon={faDiagramProject} size="2x" color="black"/>
+                                    </ActionIcon>
+                                </Button>
+                            </Tooltip>
+                        </Text>
+
+                        <Text component={Link} variant='link' to='/issue'>
+                            <Tooltip
+                                label="Issues"
+                                color="black"
+                                withArrow
+                            >
+                                <Button variant='filled' color='yellow' size='xs'>
+                                    <ActionIcon size="xl" radius="lg">
+                                        <FontAwesomeIcon icon={faTicket} size="2x" color="black"/>
+                                    </ActionIcon>
+                                </Button>
+                            </Tooltip>
+                        </Text>
+
+                        <Text component={Link} variant='link' to='/createIssue'>
+
+                            <Tooltip
+                                label="CreateIssue"
+                                color="black"
+                                withArrow
+                            >
+                                <Button variant='filled' color='green' size='xs'>
+                                    <ActionIcon size="xl" radius="lg">
+                                        <FontAwesomeIcon icon={faPlus} size="2x" color="black"/>
+                                    </ActionIcon>
+                                </Button>
+                            </Tooltip>
+                        </Text>
+                    </div>
+                    <Navbar.Section>
+                        <User />
+                    </Navbar.Section>
+                </Navbar>
+            }
+
         >
+            <Title order={1} align="center">
+                <Image src={BuggyLogo} width={50} height={50} align="center">
+                </Image>
+                Buggy-Tracker
+            </Title>
 
-            <Navbar.Section grow mt="lg">
-                <div style={{ display: "flex", flexDirection: "column" }}>
-
-                    <Text component={Link} variant="link" to="/">
-                    <Button variant="filled" color='white' size='xs' styles={{
-                        root: {
-                            backgroundColor: "unset"
-                        }}
-                    }  >
-                        
-                        <Image src={BuggyLogo} width={50} height={50}  ></Image>
-                    </Button>
-                    </Text>
-
-                    <Text component={Link} variant="link" to="/projects">
-                        
-                        <Tooltip 
-                            label="Projects"
-                            color="black" 
-                            withArrow
-                            >
-                            <Button variant="filled" color='blue' size='xs' >
-                                <FontAwesomeIcon icon={faDiagramProject} size="2x" color="black" align="left" />
-                            </Button>
-                        </Tooltip>                   
-                     </Text>
-
-                    <Text component={Link} variant="link" to="/issue">
-                        
-                        <Tooltip
-                            label="Issues"
-                            color="black"
-                            withArrow
-                            >
-                            <Button variant='filled' color='yellow' size='xs'>
-                                <FontAwesomeIcon icon={faTicket} size="2x" color="black" align="left" />
-                            </Button>
-                        </Tooltip>
-                    </Text>
-                    <Text component={Link} variant="link" to="/createIssue">
-                       
-                        <Tooltip
-                            label="CreateIssue"
-                            color="black"
-                            withArrow
-                            >
-                            <Button variant="filled" color='green' size="xs">
-                                 <FontAwesomeIcon icon={faPlus} size="2x" color="black" align="left" />
-                            </Button>
-                        </Tooltip>
-                    </Text>
-                </div>
-            </Navbar.Section>
-            <Navbar.Section>
-                <text>SJ</text>
-            </Navbar.Section>
-        </Navbar>
-    )
+        </AppShell>
+    );
 }
-
-export default Appshell;
+export default Sidebar;

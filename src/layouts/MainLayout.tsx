@@ -1,5 +1,4 @@
 import Sidebar from "../components/Sidebar";
-import AppHeader from "../components/Header";
 import { AppShell } from "@mantine/core";
 
 const MainLayout = () => {
@@ -9,7 +8,6 @@ const MainLayout = () => {
             asideOffsetBreakpoint="sm"
             fixed
             navbar={<Sidebar/>}
-            header={<AppHeader/>}
         >
         </AppShell>
     )

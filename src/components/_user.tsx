@@ -36,7 +36,7 @@ export function User() {
                             Account
                         </Text>
                         <Text color="dimmed" size="xs">
-                            Kielkingtop@protonmail.com
+                            limqianyu10@gmail.com
                         </Text>
                     </Box>
                 </Group>
